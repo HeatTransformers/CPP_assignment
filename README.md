@@ -13,39 +13,39 @@ You're free to use anything from C++ standard libraries. Use at most C++20.
 Required interface functions for testing:
 
 ### GPIOInterruptServiceRoutine
-This interrupt service routine takes, in order, a uint16_t value indicating the 'pin', and the enum level_e (which is HIGH or LOW) which indicates the current level of the pin.
-Fill this function however you need to.
-This is where the system will receive GPIO test input.
+This interrupt service routine takes, in order, a uint16_t value indicating the 'pin', and the enum level_e (which is HIGH or LOW) which indicates the current level of the pin.\
+Fill this function however you need to.\
+This is where the system will receive GPIO test input.\
 Validation code would provide input here.
 
 ### UARTInterruptServiceRoutine
-This interrupt service routine takes, in order, a uint16_t value indicating the UART 'port', and a single char which indicates the received character.
-Fill this however you need to.
-This is where the system will receive UART test input.
-Each message starts with a [, and ends with a ]; but these (and only these) are to be excluded when reported.
-Note that \ is an escape character. So a received message "[receive \] and \\ characters]" is intended to be reported as "receive ] and \ characters"
+This interrupt service routine takes, in order, a uint16_t value indicating the UART 'port', and a single char which indicates the received character.\
+Fill this however you need to.\
+This is where the system will receive UART test input.\
+Each message starts with a [, and ends with a ]; but these (and only these) are to be excluded when reported.\
+Note that \ is an escape character. So a received message "[receive \\] and \\\ characters]" is intended to be reported as "receive ] and \ characters".\
 Validation code would provide input here.
 
 ### ReportMonitorMessage
-This function takes takes an std::string.
-Feel free to write (and share) an implementation yourself to test your output.
-Your code will call this function to transmit the reports (which are of type Monitor).
+This function takes takes an std::string.\
+Feel free to write (and share) an implementation yourself to test your output.\
+Your code will call this function to transmit the reports (which are of type Monitor).\
 Validation code would implement this function and check output against an expected set.
 
 ### ReportErrorMessage
-This function takes an std::string.
-Feel free to write (and share) an implementation yourself to test your output.
-Your code will call this function to transmit the reports (which are of type Error).
+This function takes an std::string.\
+Feel free to write (and share) an implementation yourself to test your output.\
+Your code will call this function to transmit the reports (which are of type Error).\
 Validation code would implement this function and check output against an expected set.
 
 ### DisableInterrupts
-This function takes no arguments.
-Turns off all interrupts.
+This function takes no arguments.\
+Turns off all interrupts.\
 Validation code would use this to stop calling the GPIOInterruptServiceRoutine and UARTInterruptServiceRoutine interrupt service routines until re-enabled.
 
 ### EnableInterrupts
-This function takes no arguments.
-Enables all interrupts.
+This function takes no arguments.\
+Enables all interrupts.\
 Validation code would be re-enabled to call the GPIOInterruptServiceRoutine and UARTInterruptServiceRoutine interrupt service routines.
 
 ## Your tasks
