@@ -1,0 +1,5 @@
+configure.sh Configures the project. Call this first. Should only be called once.
+
+build.sh Builds the project.
+
+run.sh Runs the project.
